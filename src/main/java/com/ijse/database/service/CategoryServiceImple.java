@@ -1,6 +1,7 @@
 package com.ijse.database.service;
 
 import java.util.List;
+import java.util.Locale.Category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,30 +12,42 @@ import com.ijse.database.repository.ItemCategoryRepository;
 @Service
 public class CategoryServiceImple implements CategoryService{
     @Autowired
-    private ItemCategoryRepository categoryRepository;
+    private ItemCategoryRepository itemCategoryRepository;
 
     @Override
     public List<ItemCategory> getAllCategory(){
-        return categoryRepository.findAll();
+        return itemCategoryRepository.findAll();
     }
 
     @Override 
     public ItemCategory creatCategory(ItemCategory category){
-        return categoryRepository.save(category);
+        return itemCategoryRepository.save(category);
     }
 
     @Override
     public ItemCategory findCategoryById(Long id){
-        return categoryRepository.findById(id).orElse(null);
+        return itemCategoryRepository.findById(id).orElse(null);
     }
 
     @Override
     public ItemCategory updateCategory(Long id,ItemCategory category){
-        ItemCategory existingCategory=categoryRepository.findById(id).orElse(null);
-        if(existingCategory != null){
-            existingCategory.setName(category.getName());
-            return categoryRepository.save(existingCategory);
+        ItemCategory existingitemCategory=itemCategoryRepository.findById(id).orElse(null);
+        if(existingitemCategory != null){
+            existingitemCategory.setName(category.getName());
+            return itemCategoryRepository.save(existingitemCategory);
         }else{
+            return null;
+        }
+    }
+
+    @Override
+    public ItemCategory deleteCategory(Long id) {
+        ItemCategory itemCategory = itemCategoryRepository.findById(id).orElse(null);
+
+        if (itemCategory != null) {
+            itemCategoryRepository.deleteById(id);
+            return itemCategory;
+        } else {
             return null;
         }
     }

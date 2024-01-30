@@ -12,4 +12,5 @@ public interface CategoryService {
     ItemCategory findCategoryById(Long id);
     ItemCategory creatCategory(ItemCategory category);
     ItemCategory updateCategory(Long id, ItemCategory category);
+    ItemCategory deleteCategory(Long id);
 }
