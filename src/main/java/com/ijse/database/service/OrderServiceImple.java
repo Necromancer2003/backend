@@ -46,10 +46,10 @@ public class OrderServiceImple implements OrderService{
                 itemSet.add(product);
                 order.setTotal(order.getTotal()+product.getPrice());
 
-                //stock - karanna puluwan methanama
+                
             }
         }
-        Double tax =(order.getTotal()/100)*15;
+        Double tax =(order.getTotal()/100)*18;
         order.setTax(tax);
         order.setOrdertime(LocalDateTime.now());
         order.setItem(itemSet);

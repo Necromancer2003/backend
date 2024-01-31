@@ -26,7 +26,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/categories")
+    @GetMapping("/categoriesal")
     public List<ItemCategory> getAllCategorise(){
         return categoryService.getAllCategory();
     }
@@ -50,7 +50,6 @@ public class CategoryController {
     public ItemCategory deleteCategory(@PathVariable Long id) {
         return categoryService.deleteCategory(id);
 
-        
     }
 
 }
