@@ -28,7 +28,7 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    @GetMapping("/products")
+    @GetMapping("/productss")
     public ResponseEntity<List<Item>> getAllItem(){
         return ResponseEntity.status(HttpStatus.OK).body(itemService.getAllItem());
     }
